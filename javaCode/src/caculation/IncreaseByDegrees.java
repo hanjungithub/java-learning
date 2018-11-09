@@ -18,7 +18,8 @@ public class IncreaseByDegrees {
         BigDecimal tempOrigin = new BigDecimal(origin).setScale(newScale, mode);
         sum = sum.add(tempOrigin);
         System.out.println("第1年：" + tempOrigin + "--->总共累计：" + sum);
-        if (degrees!=null && degrees.length < 1) return;
+        if (degrees!=null || degrees.length < 1) return;
+        if (degrees.length ==1 && "".equals(degrees[0]) ) return;
         for (int i = 0; i < degrees.length; i++) {
             BigDecimal tempDegree = new BigDecimal(degrees[i]);
             tempOrigin = tempOrigin.add(tempOrigin.multiply(tempDegree).divide(new BigDecimal(100)).setScale(newScale, mode)).setScale(newScale, mode);
