@@ -5,7 +5,9 @@ import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.redis.listener.adapter.MessageListenerAdapter;
 import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
+import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Service;
 
 /**
@@ -16,14 +18,18 @@ import org.springframework.stereotype.Service;
  **/
 @Service
 public class Consumer {
-    public void receiveMessage(String message){
+    public void receiveMessage(Object message){
         //序列化对象（特别注意：发布的时候需要设置序列化；订阅方也需要设置序列化）
         Jackson2JsonRedisSerializer seria = new Jackson2JsonRedisSerializer(Message.class);
-        ObjectMapper objectMapper = new ObjectMapper();
+        Message result = (Message)message;
+        System.out.println("receiveMessage{ }:" + result);
+       /* ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.setVisibility(PropertyAccessor.ALL, JsonAutoDetect.Visibility.ANY);
         objectMapper.enableDefaultTyping(ObjectMapper.DefaultTyping.NON_FINAL);
         seria.setObjectMapper(objectMapper);
         Message result = (Message)seria.deserialize(message.getBytes());
-        System.out.println("receiveMessage{ }:" + result);
+        System.out.println("receiveMessage{ }:" + result);*/
     }
+
+
 }
