@@ -38,7 +38,7 @@ public class TopicConsumerB {
             exchange = @Exchange(name = RabbitmqConfig.EXCHANGE_TOPIC, durable = "true", type = "topic"),key = "EXCHANGE_TOPIC.MESSAGE2"))
     public void process(Message message, Channel channel) throws IOException {
         log.info("topic-exchange模式-receive-B: 我进来过了但是被我拒绝接受消息了"+new String(message.getBody()) );
-        channel.basicNack(message.getMessageProperties().getDeliveryTag(),false,false);
+        channel.basicNack(message.getMessageProperties().getDeliveryTag(),false,true);
         return;
         // 采用手动应答模式, 手动确认应答更为安全稳定
         //channel.basicAck(message.getMessageProperties().getDeliveryTag(), false);

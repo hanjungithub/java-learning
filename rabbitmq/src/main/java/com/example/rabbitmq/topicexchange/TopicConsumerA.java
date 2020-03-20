@@ -37,6 +37,11 @@ public class TopicConsumerA {
             value = @Queue(value = RabbitmqConfig.QUEUE_TOPIC_A, durable = "true"),
             exchange = @Exchange(name = RabbitmqConfig.EXCHANGE_TOPIC, durable = "true", type = "topic"),key = "EXCHANGE_TOPIC.MESSAGE1"))
     public void process(Message message, Channel channel) throws IOException {
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         // 采用手动应答模式, 手动确认应答更为安全稳定
         channel.basicAck(message.getMessageProperties().getDeliveryTag(), false);
         log.info("topic-exchange模式-receive-A: " + new String(message.getBody()));

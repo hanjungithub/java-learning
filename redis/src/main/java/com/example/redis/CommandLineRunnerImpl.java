@@ -15,8 +15,8 @@ public class CommandLineRunnerImpl implements CommandLineRunner {
     private RedisTemplate redisTemplate;
     @Override
     public void run(String... args) throws Exception {
-        System.out.println("通过实现CommandLineRunner接口，在spring boot项目启动后打印参数");
+        /*System.out.println("通过实现CommandLineRunner接口，在spring boot项目启动后打印参数");
         SingleConsumer singleConsumer = new SingleConsumer(redisTemplate);
-        singleConsumer.start();
+        singleConsumer.start();*/
     }
 }

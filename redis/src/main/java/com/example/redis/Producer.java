@@ -15,15 +15,17 @@ import java.util.Date;
 @Service
 public class Producer {
 
+    private static int i=0;
+
     @Autowired
     private RedisTemplate redisTemplate;
 
     public void produce(){
         Message message = new Message();
-        message.setContent(String.valueOf(Math.random()));
+        message.setContent(String.valueOf(Producer.i++));
         message.setTime(new Date());
         redisTemplate.convertAndSend("message_1",message);
-        redisTemplate.opsForList().leftPush("message_2",message);
+        //redisTemplate.opsForList().leftPush("message_2",message);
     }
 
 }

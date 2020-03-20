@@ -33,7 +33,7 @@ public class RedisConfig {
         RedisMessageListenerContainer container = new RedisMessageListenerContainer();
         container.setConnectionFactory(connectionFactory);
         //消息订阅处理器
-        container.addMessageListener(consumerListenerAdapter, new PatternTopic("message_3"));
+        container.addMessageListener(consumerListenerAdapter, new PatternTopic("message_1"));
         //container.setTopicSerializer(this.jacksonSerializer());
         // 这里看redisTemplate有没有序列化key如果有的话，这里也要同样对topic的名称进行序列化，否则匹配不到
         return container;
