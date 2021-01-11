@@ -1,10 +1,17 @@
 package parentAndChildren;
 
 public class Parent {
+
+    private static int x = 11;
+
+    static {
+        System.out.println("Parent children");
+    }
     public String name = "parent";
 
     public Parent() {
-        print();
+        this.print();
+        System.out.println(44);
     }
 
     public void print() {

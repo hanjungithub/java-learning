@@ -10,12 +10,12 @@ import org.springframework.stereotype.Component;
  * @Author hanjun
  * @Date 2019/8/30 15:26
  **/
-@Component
+/*@Component*/
 public class Job {
     @Autowired
     private MessageProducer producer;
 
-    @Scheduled(fixedRate = 10000)
+    @Scheduled(fixedRate = 1000)
     public void create() {
             producer.sendMessageToTopicExchange();
     }

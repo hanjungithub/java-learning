@@ -2,6 +2,11 @@ package parentAndChildren;
 
 public class Children extends Parent {
 
+    private static int i=10;
+
+    static {
+        System.out.println("static children");
+    }
     private String name = "Children";
 
     public Children() {
@@ -13,8 +18,9 @@ public class Children extends Parent {
     }
 
     public static void main(String[] args) {
-        Children c = new Children();
-        System.out.println(c.name);
+        System.out.println(Children.i);
+        //new Children();
+        //System.out.println(c.name);
     }
 
 }
