@@ -1,7 +1,6 @@
-package bio;
+package Netty;
 
 import java.io.*;
-import java.nio.ByteBuffer;
 import java.nio.channels.FileChannel;
 
 /**
